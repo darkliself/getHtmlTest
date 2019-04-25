@@ -12,18 +12,7 @@ class Main(QtWidgets.QMainWindow, mainView.Ui_MainWindow):
         super().__init__()
         self.setupUi(self)  # Это нужно для инициализации нашего дизайна
         self.browser = AceWebView(self.gridLayout_2)
-        self.browser.browserView.page().runJavaScript("""
-         alert("is here?")
-            var olList = document.getElementById('tested');
-            olList.html = "hello"
-             alert("is here?")
-            var newListItem = document.createElement('div');
-             alert("is here?")
-            newListItem.innerText = 'some text here';
-             alert("is here?")
-            olList.appendChild(newListItem);
-            alert("is here?")
-        """)
+
         ## Вызов сплиттера
         ##slitedPool = SectionSplitter()
 
@@ -35,6 +24,23 @@ class Main(QtWidgets.QMainWindow, mainView.Ui_MainWindow):
 
     def tmpShow(self):
         self.browser.browserView.page().toHtml(self.SayHello)
+        self.browser.browserView.page().runJavaScript("""
+            
+
+                    //var code = editor.getValue();
+
+                    editor.setValue("new code here");
+                  editor.getSession().setMode("ace/mode/javascript");
+                  var olList = document.getElementById('tested');
+    
+                   
+                  var newListItem = document.createElement('div');
+                
+                  newListItem.innerText = 'some text here';
+                 
+                  olList.appendChild(newListItem);
+            
+              """)
 
 def main():
     app = QtWidgets.QApplication(sys.argv)  # Новый экземпляр QApplication
